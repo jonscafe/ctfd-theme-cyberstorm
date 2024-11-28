@@ -10,7 +10,7 @@
         }
         .sidenav {
             height: 100%;
-            width: 0px; /* Start with the sidebar close */
+            width: 0px; /* Start with the sidebar closed */
             position: fixed;
             z-index: 1;
             top: 0;
@@ -46,9 +46,9 @@
             left: 10px;
             z-index: 2;
             cursor: pointer;
-        }
-        .navbar-toggler-icon i {
-            color: white;
+            filter: invert(1);
+            mix-blend-mode: difference;
+            transition: color 0.3s, filter 0.3s;
         }
         .navbar-toggler {
             position: fixed; /* Fixed position for the toggle button */
@@ -72,11 +72,12 @@
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 10px;}
         }
+
     </style>
 </head>
 <body>
     <div class="navbar-toggler-icon" onclick="openNav()">
-        <i class="fas fa-bars" style="font-size:24px;"></i>
+        <i class="fa-solid fa-bars fa-xl" style="color: #8080ff;"></i>
     </div>
 
     <div id="mySidenav" class="sidenav">
@@ -89,7 +90,20 @@
             {% endif %}
         </a>
         <div class="spacer"></div> <!-- This adds space between the logo and the links -->
-        <a href="{{ url_for('views.static_html', route='/') }}"></a>
+        
+        <!-- New theme toggle button -->
+        <li class="nav-item">
+          <button class="nav-link theme-switch" type="button">
+            <span data-bs-toggle="tooltip" data-bs-placement="bottom" title="{% trans %}Toggle theme{% endtrans %}">
+              <i class="fas fa-sun d-none d-md-inline"></i>
+            </span>
+            <span class="d-sm-inline d-md-none">
+              <i class="fas fa-sun pe-1"></i>
+              {% trans %}Toggle theme{% endtrans %}
+            </span>
+          </button>
+        </li>
+        
         {% if authed() %}
             <a href="{{ url_for('users.listing') }}"><i class="fas fa-user"></i> Users</a>
             {% if Configs.user_mode == 'teams' %}
