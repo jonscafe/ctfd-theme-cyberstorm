@@ -31,22 +31,57 @@
 
         /* Full page view */
         .page {
-            height: 100vh;
+            min-height: 100vh; /* Sets the minimum height to the full viewport height */
+            height: auto; /* Allows the height to adjust based on content */
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
             transition: all 0.5s ease;
             padding: 20px;
-            backdrop-filter: blur(10px); /* Glass effect */
-            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Glass effect with blur */
+            background: rgba(255, 255, 255, 0.4); /* Semi-transparent background with blur */
             border-radius: 15px; /* Rounded corners for glass effect */
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        /* Background Images for Pages */
+        #page1 {
+            background-image: url('/files/bg/2.jpg'); /* Dummy image URL */
+            background-size: cover;
+        }
+
+        #page2 {
+            background-image: url('/files/bg/1.jpg'); /* Dummy image URL */
+            background-size: cover;
+        }
+
+        #page3 {
+            background-image: url('/files/bg/3.jpg'); /* Dummy image URL */
+            background-size: cover;
+        }
+      
+        #page4 {
+            background-image: url('/files/06157e26ecb8838135604d5ec6e29ccb/bg4.png'); /* Dummy image URL */
+            background-size: cover;
+        }
+      
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         #page1 {
             background-color: var(--caribbean-current);
             color: var(--white);
             text-align: center;
+            animation: fadeIn 2s ease-out; /* Apply the fade-in animation */
         }
 
         #page1 img {
@@ -82,11 +117,13 @@
 
         /* List styling for hall of fame */
         .hall-of-fame {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             justify-content: center;
-            max-width: 800px;
+            max-width: 1200px;
+            padding: 10px;
+            margin: 0 auto;
         }
 
         .hall-of-fame li {
@@ -97,12 +134,43 @@
             color: var(--jet);
             border-radius: 8px;
             padding: 15px;
-            width: 30%;
             text-align: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
 
         .hall-of-fame li img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        /* List styling for members-page */
+        .members-page {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            padding: 10px;
+            margin: 0 auto;
+        }
+
+        .members-page li {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--platinum);
+            color: var(--jet);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .members-page li img {
             width: 60px;
             height: 60px;
             margin-bottom: 10px;
@@ -116,8 +184,25 @@
             margin-bottom: 5px;
         }
 
+        .member-page-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .member-page-desc {
+            font-size: 1rem;
+            color: var(--jet);
+        }
+
         .member-names {
             font-size: 1rem;
+        }
+
+        /* Hover effect for hall of fame items */
+        .hall-of-fame li:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         /* Scroll down effect */
@@ -150,7 +235,7 @@
             }
 
             .hall-of-fame li {
-                width: 45%; /* Adjusted width for medium screens */
+                width: 100%; /* Adjusted width for medium screens */
             }
         }
 
@@ -164,53 +249,175 @@
             }
 
             .hall-of-fame li {
-                width: 80%; /* Adjusted width for small screens */
+                width: 100%; /* Adjusted width for small screens */
             }
         }
+        .hack-button {
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent glass effect */
+            color: var(--white); /* Text color */
+            font-size: 1.2rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            backdrop-filter: blur(5px); /* Glass effect blur */
+            transition: all 0.3s ease;
+          	animation: fadeIn 2s ease-out;
+        }
+
+        .hack-button:hover {
+            background: rgba(255, 255, 255, 0.4); /* Slightly opaque on hover */
+            color: var(--jet); /* Invert text color on hover */
+            border-color: rgba(255, 255, 255, 0.7); /* Slightly brighter border on hover */
+        }
+      
+        .page1-button {
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent glass effect */
+            color: var(--white); /* Text color */
+            font-size: 0.8rem;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 20px;
+            backdrop-filter: blur(5px); /* Glass effect blur */
+            transition: all 0.3s ease;
+          	animation: fadeIn 2s ease-out;
+        }
+
+        .page1-button:hover {
+            background: rgba(255, 255, 255, 0.4); /* Slightly opaque on hover */
+            color: var(--jet); /* Invert text color on hover */
+            border-color: rgba(255, 255, 255, 0.7); /* Slightly brighter border on hover */
+          animation: fadeIn 2s ease-out;
+        }
+      
+        .top-buttons-container {
+            position: absolute;
+            top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
     </style>
 </head>
 <body>
 
     <!-- Page 1: Sanapati Cyberstorm Introduction -->
     <div class="page" id="page1">
+              <!-- Button Container -->
+        <div class="top-buttons-container">
+            <a href="/learn" class="page1-button">Learn CTF</a>
+            <a href="#page2" class="page1-button">About Us</a>
+            <a href="#page3" class="page1-button">Hall of Fame</a>
+          	<a href="#page4" class="page1-button">Core Members</a>
+          	<a href="https://discord.gg/pSPPvbUpgb" target="_blank" class="page1-button">Discord</a>
+            <a href="https://korpstar-poltekssn.org/" target="_blank" class="page1-button">KORPSTAR POLTEKSSN</a>
+        </div>
+      
         <img src="/files/logo/banner.png" alt="Sanapati Cyberstorm Banner"> <!-- Added banner image -->
-        <p>Sanapati Cyberstorm is the CTF Club at National Cyber and Crypto Polytechnic, dedicated to honing the skills of future cybersecurity experts.</p>
-    </div>
+        <p>Storm the Cyber World!</p>
+    <button onclick="window.location.href='/challenges'" class="hack-button">Let's Hack!</button>
+  </div>
 
     <!-- Page 2: Purpose of Sanapati Cyberstorm -->
     <div class="page" id="page2">
-        <h1>About Us</h1>
-        <p>Sanapati Cyberstorm is a dynamic community established on November 10th, 2024, dedicated to fostering a collaborative environment where cybersecurity enthusiasts come together to challenge themselves through Capture The Flag (CTF) competitions. This community serves as a hub for honing technical skills, tackling gamified security challenges, and engaging with like-minded individuals to stay ahead in the ever-evolving world of cybersecurity. Whether you're a beginner or an experienced practitioner, Sanapati Cyberstorm is where growth, learning, and teamwork thrive.</p>
+        <h1><strong>About Us</strong></h1>
+        <p>Sanapati Cyberstorm is a dynamic community established on November 10th, 2023, dedicated to fostering a collaborative environment where cybersecurity enthusiasts come together to challenge themselves through Capture The Flag (CTF) competitions. This community serves as a hub for honing technical skills, tackling gamified security challenges, and engaging with like-minded individuals to stay ahead in the ever-evolving world of cybersecurity. Whether you're a beginner or an experienced practitioner, Sanapati Cyberstorm is where growth, learning, and teamwork thrive.</p>
     </div>
 
     <!-- Page 3: Members Hall of Fame -->
     <div class="page" id="page3">
-        <h1>Cyberstorm Hall of Fame 🏆</h1>
+        <h1><strong>Cyberstorm Hall of Fame 🏆</strong></h1>
         <ul class="hall-of-fame">
             <li>
-                <img src="https://via.placeholder.com/60" alt="Achievement 1">
-                <div class="competition-name">Techomfest 2024 - Champion</div>
+                <img src="/files/image/techomfest2024.jpg" alt="Achievement 1">
+                <div class="competition-name">Techomfest 2024, Semarang State Polytechnic - Champion</div>
                 <div class="member-names"><strong>Nathanael Berliano, Rayhan Ramdhany, Muhammad Faturrohman</strong></div>
             </li>
             <li>
-                <img src="https://via.placeholder.com/60" alt="Achievement 4">
+                <img src="/files/image/hacktheon.jpg" alt="Achievement 4">
                 <div class="competition-name">Hacktheon Sejong 2024 - Honorable Mention III</div>
                 <div class="member-names"><strong>Christopher Anggoman, Jonathan Marbun, Aldien Asy, Zaki Qorindi</strong></div>
             </li>
             <li>
-                <img src="https://via.placeholder.com/60" alt="Achievement 2">
-                <div class="competition-name">KMIPN VI, Cyber Security, 2024 - Champion</div>
+                <img src="/files/image/kmipn.jpg" alt="Achievement 2">
+                <div class="competition-name">Cyber Security, KMIPN VI 2024 - Champion</div>
                 <div class="member-names"><strong>Jonathan Marbun, Christopher Anggoman</strong></div>
             </li>
             <li>
-                <img src="https://via.placeholder.com/60" alt="Achievement 3">
-                <div class="competition-name">COMPFEST 16, 2024 - Champion</div>
-                <div class="member-names"><strong>Jonathan Marbun, Christopher Anggoman</strong></div>
+                <img src="/files/image/gemastik.jpg" alt="Achievement 3">
+                <div class="competition-name">Cyber Security, Gemastik 2024 - Finalists</div>
+                <div class="member-names"><strong>Jonathan Marbun, Christopher Anggoman, Ramadhani Riska</strong></div>
             </li>
             <li>
-                <img src="https://via.placeholder.com/60" alt="Achievement 4">
-                <div class="competition-name">Informatics Fest UNPAD 2024 - 2nd Runner Up</div>
-                <div class="member-names"><strong>Jonathan Marbun, Christopher Anggoman</strong></div>
+                <img src="/files/image/compfest.jpg" alt="Achievement 3">
+                <div class="competition-name">COMPFEST 16 2024, University of Indonesia - Champion</div>
+                <div class="member-names"><strong>Jonathan Marbun, Christopher Anggoman, Fikri Muhammad Abdillah</strong></div>
+            </li>
+            <li>
+                <img src="/files/image/ifest2.jpg" alt="Achievement 4">
+                <div class="competition-name">Informatics Festival 2024, Padjajaran University - 2nd Runner Up</div>
+                <div class="member-names"><strong>Jonathan Marbun, Christopher Anggoman, Fikri Muhammad Abdillah</strong></div>
+            </li>
+            <li>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbL5R1Tl_2ny8wMrCZiHqUMG_lI7KwKAK1pA&s" alt="Achievement 4">
+                <div class="competition-name">ASEAN Student Contest on Information Security (ASCIS) 2024, VNISA - Finalists</div>
+                <div class="member-names"><strong>Martua Pangaribuan, Respramon Sihombing, M. Latief, Yeheskiel Siagian</strong></div>
+            </li>
+          	<li>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRExLxoovw4FXfV7-SAjKmE1bPOtCqz-9TUbw&s" alt="Achievement 5">
+              <div class="competition-name">DigiTalent TSA Cyber Champion 2024, Kominfo - Rank 10</div>
+              <div class="member-names"><strong>Christopher Anggoman, Jonathan Marbun</strong></div>
+          	</li>
+          	<li>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRExLxoovw4FXfV7-SAjKmE1bPOtCqz-9TUbw&s" alt="Achievement 5">
+              <div class="competition-name">DigiTalent TSA Cyber Champion 2024, Kominfo - Rank 14</div>
+              <div class="member-names"><strong>Martua Pangaribuan, Respramon Sihombing, M. Latief, Yeheskiel Siagian</strong></div>
+          	</li>
+        </ul>
+    </div>
+        <!-- Page 4: Introducing Cyberstorm Members -->
+    <div class="page" id="page4">
+        <h1><strong>Cyberstorm Core Members 🌟</strong></h1>
+        <ul class="members-page">
+            <li>
+                <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Member 1">
+                <div class="member-page-name">Jonathan S. Marbun</div>
+             	<div class="member-page-desc"><strong>k.eii</strong></div>
+                <div class="member-page-desc">Full-time Stego Trashtalker</div>
+            </li>
+            <li>
+                <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Member 2">
+                <div class="member-page-name">Christopher Anggoman</div>
+              	<div class="member-page-desc"><strong>itoid</strong></div>
+                <div class="member-page-desc">Binary Exploitation Enthusiast</div>
+            </li>
+            <li>
+                <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Member 3">
+                <div class="member-page-name">Martua Pangaribuan</div>
+              	<div class="member-page-desc"><strong>Rajdoll</strong></div>
+                <div class="member-page-desc">Web Exploitation Player</div>
+            </li>
+            <li>
+                <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Member 4">
+                <div class="member-page-name">Respramon Sihombing</div>
+              	<div class="member-page-desc"><strong>hombing</strong></div>
+                <div class="member-page-desc">Forensic Player</div>
+            </li>
+            <li>
+                <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Member 5">
+                <div class="member-page-name">M. Latief</div>
+              	<div class="member-page-desc"><strong>indah_LTF</strong></div>
+                <div class="member-page-desc">Reverse Engineer</div>
+            </li>
+            <li>
+                <img src="https://st3.depositphotos.com/9998432/13335/v/450/depositphotos_133351928-stock-illustration-default-placeholder-man-and-woman.jpg" alt="Member 6">
+                <div class="member-page-name">Yeheskiel Siagian</div>
+              	<div class="member-page-desc"><strong>kielvv</strong></div>
+                <div class="member-page-desc">Crypto Lover</div>
             </li>
         </ul>
     </div>
@@ -220,21 +427,25 @@
         window.addEventListener('scroll', function() {
             const threshold1 = window.innerHeight / 2;
             const threshold2 = window.innerHeight * 1.2;
-            const threshold3 = window.innerHeight * 2.5;
+            const threshold3 = window.innerHeight * 2.3;
+            const threshold4 = window.innerHeight * 2.7;
 
             if (window.scrollY > threshold1 && window.scrollY < threshold3) {
                 document.body.classList.add('scrolled');
                 document.body.classList.remove('page2', 'page3');
             } else {
-                document.body.classList.remove('scrolled', 'page2', 'page3');
+                document.body.classList.remove('scrolled', 'page2', 'page3', 'page4');
             }
 
             if (window.scrollY > threshold2 && window.scrollY < threshold3) {
                 document.body.classList.add('page2');
             }
 
-            if (window.scrollY > threshold3) {
+            if (window.scrollY > threshold3 && window.scrollY < threshold4) {
                 document.body.classList.add('page3');
+            }
+            if (window.scrollY > threshold4) {
+                document.body.classList.add('page4');
             }
         });
     </script>
